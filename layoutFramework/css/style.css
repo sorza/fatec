@@ -1,0 +1,117 @@
+:root
+{
+   --cor-secundaria : #348e91;
+   --cor-tercearia: #1c5052;
+   --cor-da-fonte: #f2f2f2;
+   --cor-primaria: #213635;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    box-sizing: border-box;
+    background-color: var(--cor-primaria);
+    color: var(--cor-da-fonte);   
+}
+
+.cabecalho
+{
+   display: flex;
+   flex-direction: column;
+  
+}
+.cabecalho__painel
+{
+    text-align: center;
+    height: 80px;
+    width: 100%;
+    background-color: var(--cor-tercearia);
+   
+}
+
+.cabecalho__navegacao
+{    
+    display: flex;
+    height: 40px;
+    justify-content: center;    
+    padding: 5px;   
+}
+
+.apresentacao__sobre
+{
+   display: flex;
+   align-items: center;
+   padding: 20px;
+}
+
+.apresentacao__sobre__DSM
+{
+    text-align: justify;
+}
+
+.apresentacao__sobre__DSM__titulo
+{
+    text-align: center;
+}
+
+.rodape{
+    background-color: var(--cor-secundaria);
+    text-align: center; 
+}
+
+.btn
+{
+    border: 2px solid var(--cor-tercearia);
+    background-color: var(--cor-tercearia);
+    width: 200px;
+    margin: 0px 5px ;
+    text-align: center;    
+    color: var(--cor-da-fonte);
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover
+{
+    background-color: var(--cor-secundaria);
+}
+
+#profissional-img
+{
+    width: 300px;
+    margin: 20px;
+}
+
+@media (max-width: 700px)
+{
+    .cabecalho__navegacao
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .apresentacao__sobre
+    {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn
+    {
+        width: 250px;
+        margin: 3px;
+    }
+}
+
+
+
+
+
+
+
