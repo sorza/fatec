@@ -1,7 +1,17 @@
 <?php
  
+require_once 'validacao';
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     session_start();
+
+    if(validarLogin($_POST))
+    {
+        
+    }
+
+    login = []
+
     if($_POST['username'] == 'alexandre' and $_POST['password'] == '123456'){
         $_SESSION['loggedin'] = TRUE;
         $_SESSION["username"] = 'Alexandre Sorza';
@@ -10,8 +20,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION['loggedin'] = FALSE;
     }
 }
-
-setcookie('cadastro', 'novo');
 
 ?>
  
