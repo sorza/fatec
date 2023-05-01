@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+ <head>
+    <meta charset="UTF-8">
+    <title>Verificador de Feriados</title>
+ </head>
+ <body>
+    <body> 
+        {% if feriado.nome != "" %}
+            <h1>Que alegria, hoje é feriado!</h1>
+            <p>Feriado de {{feriado.nome}}</p>
+            <p>Data: {{feriado.dia}}/{{feriado.mes}} </p>
+        {% else %}
+            <h1>Que pena, hoje não é feriado!</h1>            
+        {% endif %}        
+ </body>
+</html>
