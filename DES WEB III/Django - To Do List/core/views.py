@@ -6,14 +6,10 @@ import datetime
 data = datetime.date.today()
 
 def index(request):
- 
-    #Criar um dicionario de contexto, e buscar os tasks para a data de hoje
-    #passar a variavel como parametro depois do html
 
     atividades = []
 
-    context = {'listaAtividades': atividades }   
-    
+    context = {'listaAtividades': atividades }       
     atividades = AtividadeModel.objects.all()
 
     for atividade in atividades:
@@ -22,12 +18,11 @@ def index(request):
 
     return render(request,'index.html', context)
 
-def cadastro(request): 
-    
+def cadastro(request):     
     form = AtividadeFormModel   
     return render(request,'cadastro.html', {'form': form})
 
-def processa_formulario(request):
+def cadastra_atividade(request):
     form = AtividadeFormModel(request.POST)
     if form.is_valid():
         atividade = form.data['atividade']
@@ -37,3 +32,10 @@ def processa_formulario(request):
         form.save()
         return cadastro(request)
     return HttpResponse('Registro Inválido')
+
+def remove_atividade(request, id):
+    atividade = AtividadeModel.objects.get(pk=id) 
+
+    if atividade != None:
+        atividade.delete()
+    return index(request)

@@ -19,8 +19,7 @@
                 <div class="navbar-nav">                  
                   <a class="nav-link" href="{% url 'index' %}">Atividades</a> 
                   <a class="nav-link" href="{% url 'cadastro' %}">Cadastrar</a>   
-                  <a class="nav-link" href="admin">Django Admin</a>  
-                       
+                  <a class="nav-link" href="admin">Django Admin</a>                         
                 </div>
               </div>
             </div>
@@ -42,6 +41,8 @@
                   <th scope="col">Detalhes</th>
                   <th scope="col">Data</th>
                   <th scope="col">Registrado em</th>
+                  <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>  
@@ -51,7 +52,8 @@
                       <td>{{item.atividade}}</td>
                       <td>{{item.detalhes}}</td>
                       <td>{{item.data}}</td>
-                      <td>{{item.cadastrado_em}}</td>
+                      <td>{{item.cadastrado_em}}</td>                      
+                      <td><a href="/remove/{{item.id}}" class="btn btn-danger">Excluir</a></td>                      
                   </tr>
                   {% endfor %} 
               </tbody>
