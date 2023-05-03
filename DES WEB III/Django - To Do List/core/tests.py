@@ -1,4 +1,7 @@
 from django.test import TestCase
+from .models import AtividadeModel
+from .forms import AtividadeFormModel
+from datetime import datetime
 
 class IndexTest(TestCase):
     def setUp(self):
@@ -9,6 +12,40 @@ class IndexTest(TestCase):
 
     def test_template_index(self):
         self.assertTemplateUsed(self.resp, 'index.html')
-       
+
+    def test_texto(self):
+        self.assertContains(self.resp, 'atividade')
+
+class AtividadeModelTest(TestCase):
+    def setUp(self):   
+        self.cadastro = AtividadeModel(
+            atividade = 'Prova',
+            detalhes = 'Prova do Orlando DES WEB III',
+            data = '2023-05-03'
+        )
+        self.cadastro.save()
     
+    def test_created(self):
+        self.assertTrue(AtividadeModel.objects.exists())
+
+class AtividadeFormTest(TestCase):
+    def test_form_has_fields(self):
+        form = AtividadeFormModel()
+        expected = ['atividade','detalhes','data']
+        self.assertSequenceEqual(expected, list(form.fields))
+
+    def make_validated_form(self, **kwargs):
+        valid = dict(
+            nome='Prova',
+            detalhes='Prova do Orlando',
+            data='2023-05-03'
+        )
+
+        data = dict(valid, **kwargs)
+        form = AtividadeFormModel(data)
+        form.is_valid()
+        return form
+ 
     
+
+
