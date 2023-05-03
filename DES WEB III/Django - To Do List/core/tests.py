@@ -34,7 +34,7 @@ class AtividadeFormTest(TestCase):
         expected = ['atividade','detalhes','data']
         self.assertSequenceEqual(expected, list(form.fields))
 
-    def make_validated_form(self, **kwargs):
+    def test_validated_form(self, **kwargs):
         valid = dict(
             nome='Prova',
             detalhes='Prova do Orlando',
@@ -46,6 +46,17 @@ class AtividadeFormTest(TestCase):
         form.is_valid()
         return form
  
-    
+class DeleteFromTest(TestCase):
+    def setUp(self):     
+        self.cadastro = AtividadeModel(
+            atividade = 'Prova',
+            detalhes = 'Prova do Orlando DES WEB III',
+            data = '2023-05-03'
+        )        
+        self.cadastro.save()
+        self.client.get('/remove/1/')
+        
 
+    def test_object_removed(self):        
+         self.assertTrue( len(AtividadeModel.objects.all()) == 0)
 
