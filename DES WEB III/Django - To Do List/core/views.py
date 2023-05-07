@@ -19,20 +19,20 @@ def index(request):
     return render(request,'index.html', context)
 
 def cadastro(request):     
-    form = AtividadeFormModel   
-    return render(request,'cadastro.html', {'form': form})
+    if request.method == 'POST':    
+        form = AtividadeFormModel(request.POST)
+        if form.is_valid():
+            atividade = form.data['atividade']
+            detalhes = form.data['detalhes']
+            data = form.data['data']
 
-def cadastra_atividade(request):
-    form = AtividadeFormModel(request.POST)
-    if form.is_valid():
-        atividade = form.data['atividade']
-        detalhes = form.data['detalhes']
-        data = form.data['data']
-
-        form.save()
-        return cadastro(request)
-    return HttpResponse('Registro Inválido')
-
+            form.save()
+            return index(request)
+        return HttpResponse('Registro Inválido')
+    else:
+        form = AtividadeFormModel   
+        return render(request,'cadastro.html', {'form': form})
+    
 def remove_atividade(request, id):
     atividade = AtividadeModel.objects.get(pk=id) 
 
