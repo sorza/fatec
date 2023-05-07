@@ -16,6 +16,13 @@ class IndexTest(TestCase):
     def test_texto(self):
         self.assertContains(self.resp, 'atividade')
 
+class CadastroTest(TestCase):
+     def setUp(self):
+        self.resp = self.client.get('/cadastro')
+    
+     def test_301_response(self):
+        self.assertEqual(301, self.resp.status_code)
+    
 class AtividadeModelTest(TestCase):
     def setUp(self):   
         self.cadastro = AtividadeModel(
@@ -27,6 +34,9 @@ class AtividadeModelTest(TestCase):
     
     def test_created(self):
         self.assertTrue(AtividadeModel.objects.exists())
+
+    def test_created_only_one(self):        
+         self.assertTrue( len(AtividadeModel.objects.all()) == 1)
 
 class AtividadeFormTest(TestCase):
     def test_form_has_fields(self):
@@ -46,7 +56,7 @@ class AtividadeFormTest(TestCase):
         form.is_valid()
         return form
  
-class DeleteFromTest(TestCase):
+class DeleteFormTest(TestCase):
     def setUp(self):     
         self.cadastro = AtividadeModel(
             atividade = 'Prova',
@@ -54,9 +64,11 @@ class DeleteFromTest(TestCase):
             data = '2023-05-03'
         )        
         self.cadastro.save()
-        self.client.get('/remove/1/')
-        
+        self.client.get('/remove/1/')        
 
     def test_object_removed(self):        
          self.assertTrue( len(AtividadeModel.objects.all()) == 0)
+
+    def test_objects_exists(self):        
+         self.assertFalse( AtividadeModel.objects.exists() )
 
