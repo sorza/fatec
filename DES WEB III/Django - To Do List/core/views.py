@@ -27,7 +27,10 @@ def cadastro(request):
             data = form.data['data']
 
             form.save()
-            return index(request)
+
+            form = AtividadeFormModel()
+            return render(request,'cadastro.html', {'form': form})
+           
         return HttpResponse('Registro Inválido')
     else:
         form = AtividadeFormModel   
