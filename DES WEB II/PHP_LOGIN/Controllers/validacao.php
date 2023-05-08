@@ -3,7 +3,7 @@
 require_once (__DIR__ . '/../Models/Usuario.php');
 require_once 'usuarioController.php';
 
-function validarLogin($login)
+function validarLoginJSON($login)
 {   
     $arquivo_json = json_decode(file_get_contents("./dados/login.json"));
 
@@ -17,6 +17,11 @@ function validarLogin($login)
     }
 
     return null;
+}
+
+function validarLoginDB($login)
+{
+    
 }
 
 function validarCadastro($form)
@@ -38,7 +43,10 @@ function validarCadastro($form)
     );
 
     // Cadastrar usuario em JSON
-    if(CriarUsuarioJSON($usuario)) return "OK";
+    // if(CriarUsuarioJSON($usuario)) return "OK";
+
+    //Cadastrar usuario no Banco
+    if(CriarUsuarioDB($usuario)) return "OK";
     else return "Houve um erro durante o cadastro!";
 }
 

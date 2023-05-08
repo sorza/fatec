@@ -6,7 +6,7 @@
  {
      session_start();
         
-     $user = validarLogin($_POST); 
+     $user = validarLoginJSON($_POST); 
  
      if(isset($user))
      {

@@ -55,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>    
             <div class="form-group">
                 <label>C.P.F</label>
-                <input type="number" maxlength="11" name="cpf" class="form-control" value="">
+                <input type="text" maxlength="11" name="cpf" class="form-control" value="">
                 <span class="help-block"></span>
             </div>    
             <div class="form-group">

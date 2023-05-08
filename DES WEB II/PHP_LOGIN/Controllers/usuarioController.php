@@ -1,9 +1,9 @@
 <?php
 
 require_once (__DIR__ . '/../Models/Usuario.php');
+require_once ('dbUtils.php');
 
-function CriarUsuarioJSON($usuario)
-{
+function CriarUsuarioJSON($usuario){
     try {
 
         $user = array(
@@ -32,5 +32,23 @@ function CriarUsuarioJSON($usuario)
     } catch (\Throwable $th) {
        return false;
     }
-    
 }
+
+function CriarUsuarioDB($usuario)
+{
+    $sql = "INSERT INTO usuarios (usuario, senha, nome, cpf, permissao) VALUES ('" .
+        $usuario->getUsuario() . "','".
+        $usuario->getSenha() . "','".
+        $usuario->getNome() . "','".
+        $usuario->getCPF() . "','".
+        $usuario->getPermissao() . "');";
+
+    $db = new dbUtils();
+    $db->DbCommand($sql);
+
+    return "OK";
+}
+
+function ConsultarUsuarioDB(){}
+
+
