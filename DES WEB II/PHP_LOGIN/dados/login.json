@@ -1,0 +1,4 @@
+[
+    {"nome":"Alexandre","cpf":"45057894897","usuario":"alexandre","senha":"123456","permissao":"Admin"},   
+    {"nome":"Ana Claudia","cpf":"22697874801","usuario":"aninha","senha":"123456","permissao":"Comum"}
+]
