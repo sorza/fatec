@@ -1,19 +1,19 @@
-<?php
- 
- require_once 'validacao.php';
+<?php 
+
+ require_once './Controllers/validacao.php';
 
  if($_SERVER["REQUEST_METHOD"] == "POST")
  {
      session_start();
         
-     $usuario = validarLogin($_POST); 
+     $user = validarLogin($_POST); 
  
-     if(isset($usuario))
+     if(isset($user))
      {
          $_SESSION['loggedin'] = TRUE;
-         $_SESSION["username"] = $usuario->nome;
+         $_SESSION["username"] = $user->nome;
 
-         if($usuario->permissao == 'adm')
+         if($user->permissao == 'Admin')
          {
             header("location: welcome-admin.php");
          }
@@ -39,8 +39,7 @@
     <meta charset="UTF-8">
     <title>Acessar</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <link rel="stylesheet" href="./css/style.css">
-
+    
     <style type="text/css">
         body{ font: 14px sans-serif; }
         .wrapper{ width: 350px; padding: 20px; }
@@ -65,7 +64,6 @@
                 <input type="submit" class="btn btn-primary" value="Acessar">
             </div>          
         </form>
-    </div> 
-    <script scr="./js/main.js"><script>   
+    </div>  
 </body>
 </html>

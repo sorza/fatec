@@ -1,4 +1,7 @@
-[
-    {"nome":"Alexandre","cpf":"45057894897","usuario":"alexandre","senha":"123456","permissao":"Admin"},   
-    {"nome":"Ana Claudia","cpf":"22697874801","usuario":"aninha","senha":"123456","permissao":"Comum"}
-]
+{"usuarios":[
+    {"nome":"Alexandre","cpf":"45057894897","usuario":"alexandre","senha":"123456","permissao":"Admin"},
+    {"nome":"Ana Claudia","cpf":"22697874801","usuario":"aninha","senha":"123456","permissao":"Comum"},
+	{"nome":"teste","cpf":"12345678910","usuario":"123123123","senha":"teste","permissao":"Comum"},
+	{"nome":"teste2","cpf":"12345678910","usuario":"teste2","senha":"123","permissao":"Comum"},
+	{"nome":"teste3","cpf":"12345678910","usuario":"teste3","senha":"teste","permissao":"Comum"},
+	{"nome":"teste4","cpf":"123254656","usuario":"teste4","senha":"teste4","permissao":"Comum"}]}

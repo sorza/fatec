@@ -1,7 +1,7 @@
 <?php  
 
-require_once 'validacao.php';
-require_once './classes/Usuario.php';
+require_once './Controllers/validacao.php';
+require_once ('./Models/Usuario.php');
 
 session_start();
 
