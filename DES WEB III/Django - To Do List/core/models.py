@@ -1,6 +1,7 @@
 from django.db import models
 
 class AtividadeModel(models.Model):
+    id = models.IntegerField().primary_key
     atividade = models.CharField(max_length=50)
     detalhes = models.CharField(max_length=500)
     data = models.DateField()

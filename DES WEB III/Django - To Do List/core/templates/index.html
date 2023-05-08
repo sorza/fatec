@@ -42,6 +42,7 @@
                   <th scope="col">Data</th>
                   <th scope="col">Registrado em</th>
                   <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>  
@@ -51,8 +52,10 @@
                       <td>{{item.atividade}}</td>
                       <td>{{item.detalhes}}</td>
                       <td>{{item.data}}</td>
-                      <td>{{item.cadastrado_em}}</td>                      
-                      <td><a href="/remove/{{item.id}}" class="btn btn-danger">Excluir</a></td>                      
+                      <td>{{item.cadastrado_em}}</td>     
+                      <td><a href="/atualizacao/{{item.id}}" class="btn btn-success">Editar</a></td>                 
+                      <td><a href="/remove/{{item.id}}" class="btn btn-danger">Excluir</a></td>  
+                                          
                   </tr>
                   {% endfor %} 
               </tbody>
