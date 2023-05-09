@@ -44,11 +44,33 @@ function CriarUsuarioDB($usuario)
         $usuario->getPermissao() . "');";
 
     $db = new dbUtils();
-    $db->DbCommand($sql);
+    $db->DbCommandExec($sql);
 
     return "OK";
 }
 
-function ConsultarUsuarioDB(){}
+function ConsultarUsuarioDB($post)
+{
+    $sql = "SELECT * FROM usuarios 
+            WHERE usuarios.usuario ='" . $post['username'] . "'
+             AND  usuarios.senha ='" . $post['password'] . "';"; 
+
+    $db = new dbUtils();
+    $result = $db->DbCommandQuery($sql);
+
+    $result = $result->fetchAll(PDO::FETCH_ASSOC)[0];
+
+    print_r($result);
+
+    $usuario = new Usuario(
+        $result['nome'],
+        $result['cpf'],
+        $result['usuario'],
+        $result['senha'],
+        $result['permissao']
+    );
+    
+    return $usuario;
+}
 
 

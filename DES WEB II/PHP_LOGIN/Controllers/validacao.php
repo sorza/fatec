@@ -3,14 +3,14 @@
 require_once (__DIR__ . '/../Models/Usuario.php');
 require_once 'usuarioController.php';
 
-function validarLoginJSON($login)
+function validarLoginJSON($post)
 {   
     $arquivo_json = json_decode(file_get_contents("./dados/login.json"));
 
     foreach ($arquivo_json->usuarios as $registro) 
     {
-        if($registro->usuario  == $login['username'] &&
-            $registro->senha  == $login['password'] )
+        if($registro->usuario  == $post['username'] &&
+            $registro->senha  == $post['password'] )
         {
             return $registro;
         }       
@@ -19,9 +19,9 @@ function validarLoginJSON($login)
     return null;
 }
 
-function validarLoginDB($login)
+function validarLoginDB($post)
 {
-    
+    return ConsultarUsuarioDB($post);
 }
 
 function validarCadastro($form)

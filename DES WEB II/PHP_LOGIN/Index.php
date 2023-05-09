@@ -6,8 +6,9 @@
  {
      session_start();
         
-     $user = validarLoginJSON($_POST); 
- 
+     // $user = validarLoginJSON($_POST); 
+     $user = validarLoginDB($_POST);
+
      if(isset($user))
      {
          $_SESSION['loggedin'] = TRUE;

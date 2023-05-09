@@ -23,12 +23,27 @@ class dbUtils
         $this->conn = null;   
 	} 
 
-    public function DbCommand($sql)
+    public function DbCommandExec($sql)
     {
         try
         {
-            $this->conn->exec($sql);
-            return true;
+            return $this->conn->exec($sql);           
+        }
+        catch(PDO_Exception $e)
+        {
+            return $e->getMessage();
+        }
+        finally
+        {
+            $conn = null;
+        }
+    }
+
+    public function DbCommandQuery($sql)
+    {
+        try
+        {
+            return $this->conn->query($sql);           
         }
         catch(PDO_Exception $e)
         {
