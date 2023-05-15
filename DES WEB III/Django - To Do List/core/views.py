@@ -43,23 +43,24 @@ def remove_atividade(request, id):
         atividade.delete()
     return index(request)
 
-def atualizacao(request, id):  
+def atualizacao(request, id): 
      atividade = AtividadeModel.objects.get(pk=id)
      return render(request,'atualizacao.html', {'form': atividade})
     
-def editar(request):
+def editar(request):       
         
-        form = AtividadeFormModel(request.POST)        
-        if form.is_valid():
+        if request.method == 'POST': 
+            form = AtividadeFormModel(request.POST) 
+               
+            if form.is_valid():
+                
+                atv = AtividadeModel()
+                atv.id = form.data['id']
+                atv.atividade = form.data['atividade']
+                atv.detalhes = form.data['detalhes']
+                atv.data = form.data['data']
 
-            id = form.data['id']
-            atv = AtividadeModel.objects.get(pk=id) 
-
-            atv.atividade = form.data['atividade']
-            atv.detalhes = form.data['detalhes']
-            atv.data = form.data['data']
-
-            atv.save()
-            
-            form = AtividadeFormModel   
-            return index(request)
+                atv.save()
+                
+                form = AtividadeFormModel   
+                return index(request)
