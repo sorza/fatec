@@ -56,7 +56,7 @@ class AtividadeFormTest(TestCase):
         form.is_valid()
         return form
  
-class DeleteFormTest(TestCase):
+class DeleteTest(TestCase):
     def setUp(self):     
         self.cadastro = AtividadeModel(
             atividade = 'Prova',
@@ -71,4 +71,22 @@ class DeleteFormTest(TestCase):
 
     def test_objects_exists(self):        
          self.assertFalse( AtividadeModel.objects.exists() )
+    
+class AtualizacaoTest(TestCase):
+    def setUp(self):
+        self.cadastro = AtividadeModel(
+            atividade = 'Prova',
+            detalhes = 'Prova do Orlando DES WEB III',
+            data = '2023-05-03'
+        )        
+        self.cadastro.save()        
+        self.resp = self.client.get('/atualizacao/1/')
+    
+    def test_200(self):
+        self.assertEqual(200, self.resp.status_code)
 
+    def test_template_atualizacao(self):
+        self.assertTemplateUsed(self.resp, 'atualizacao.html')
+    
+    def test_Contais(self):
+        self.assertContains(self.resp, 'Edição')
